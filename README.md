@@ -1,42 +1,25 @@
 # AWS Cloud Security Monitoring
 
 ## Overview
-A complete AWS cloud security monitoring pipeline built using native AWS services. 
-This project demonstrates how to capture, store, analyze, and alert on security 
-events in an AWS environment.
+A collection of AWS cloud security monitoring projects using native AWS services. 
+Each project demonstrates real-world security monitoring, threat detection, and 
+incident response in a cloud environment.
 
-## Pipeline Architecture
-CloudTrail → S3 → CloudWatch Logs → Metric Filter → CloudWatch Alarm → SNS Email Alert
+## Projects
 
-## Services Used
-- **AWS CloudTrail** — captures every API call made in the AWS account
-- **Amazon S3** — stores CloudTrail logs in compressed JSON format
-- **Amazon CloudWatch Logs** — receives CloudTrail events in real time
-- **CloudWatch Metric Filter** — detects root account usage pattern
-- **CloudWatch Alarm** — fires when root account activity is detected
-- **Amazon SNS** — sends email alert when alarm triggers
+### Project 1 — CloudTrail & CloudWatch Security Pipeline
+Complete AWS audit logging and alerting pipeline.
+- CloudTrail capturing all API calls across all regions
+- S3 storing logs in compressed JSON format
+- CloudWatch Logs receiving events in real time
+- Metric filter detecting root account usage
+- CloudWatch Alarm firing when root account is used
+- SNS email notification confirmed working end to end
 
-## What Was Built
-1. Multi-region CloudTrail trail logging all AWS API activity
-2. S3 bucket storing compressed CloudTrail logs automatically
-3. CloudWatch Logs integration receiving events in real time
-4. IAM user creation captured as provisioning audit log
-5. Root account usage metric filter and alarm
-6. SNS email notification confirmed working end to end
+**Documentation:** AWS_Cloud_Security_Monitoring.pdf
 
-## Detection Rule
-Root account usage alert fires when:
-{ $.userIdentity.type = "Root" && $.userIdentity.invokedBy NOT EXISTS && $.eventType != "AwsServiceEvent" }
-
-## Compliance Relevance
-- SOC 2 — CC6.1 Logical access controls and privileged account monitoring
-- PCI DSS — Requirement 10 track and monitor all access to sensitive data
-- CIS AWS Benchmark — CIS 3.3 root account usage metric filter and alarm
-
-## Documentation
-Full project report: AWS_Cloud_Security_Monitoring.pdf
-
-## Author
-Houston Jones | Atlanta, GA
-GitHub: Hjones360
-Medium: medium.com/@agentjones
+### Project 2 — GuardDuty Threat Detection Lab
+AWS native threat detection investigation and SOC response.
+- Enabled GuardDuty with 30-day free trial
+- Generated and analyzed 410 sample findings
+- Investigated High severity EC2 Command & Control
